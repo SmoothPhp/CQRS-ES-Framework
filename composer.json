@@ -1,0 +1,48 @@
+{
+  "name": "smoothphp/crqs-es-framework",
+  "description": "Smooth Php CRQS Event Sourcing Framework",
+  "keywords": [
+    "smooth php",
+    "Command Bus",
+    "Event Sourcing",
+    "CRQS"
+  ],
+  "homepage": "https://github.com/SmoothPhp/CQRS-ES-Framework",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Simon Bennett",
+      "email": "simon@smoothphp.com",
+      "homepage": "https://smoothphp.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "ramsey/uuid": "~2.8"
+  },
+  "replace": {
+    "smoothphp/commandbus": "self.version"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SmoothPhp\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SmoothPhp\\Test\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
