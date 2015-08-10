@@ -1,5 +1,5 @@
 <?php
-namespace SmoothPhp\CommandBus;
+namespace SmoothPhp\Contracts\CommandBus;
 
 /**
  * Interface CommandTranslator

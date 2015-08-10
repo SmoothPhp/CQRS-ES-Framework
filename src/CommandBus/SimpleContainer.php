@@ -1,6 +1,8 @@
 <?php
 namespace SmoothPhp\CommandBus;
 
+use SmoothPhp\Contracts\CommandBus\HandlerResolver;
+
 /**
  * Class SimpleContainer
  * @package SmoothPhp\CommandBus

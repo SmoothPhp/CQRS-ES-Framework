@@ -2,13 +2,14 @@
 namespace SmoothPhp\CommandBus;
 
 use Rhumsaa\Uuid\Uuid;
+use SmoothPhp\Contracts\CommandBus\Command;
 
 /**
  * Class Command
  * @package SmoothPhp\CommandBus
  * @author Simon Bennett <simon.bennett@smoothphp.com>
  */
-abstract class Command
+abstract class BaseCommand implements Command
 {
     /**
      * @var string
