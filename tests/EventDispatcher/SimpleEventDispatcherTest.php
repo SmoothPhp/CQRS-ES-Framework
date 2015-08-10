@@ -30,4 +30,21 @@ final class SimpleEventDispatcherTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(1,$runCount);
     }
+
+    /**
+     * @test
+     */
+    public function check_dispatcher_does_not_run()
+    {
+        $dispatcher = new SimpleEventDispatcher();
+
+        $runCount = 0;
+        $dispatcher->addListener('test',function()use(&$runCount)
+        {
+            $runCount ++;
+        });
+        $dispatcher->dispatch('test_does_not_run',[]);
+
+        $this->assertEquals(0,$runCount);
+    }
 }
