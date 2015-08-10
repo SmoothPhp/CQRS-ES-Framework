@@ -1,6 +1,8 @@
 <?php
 namespace SmoothPhp\CommandBus;
 
+use SmoothPhp\Contracts\CommandBus\CommandTranslator;
+
 /**
  * Class SimpleCommandTranslator
  * @package SmoothPhp\CommandBus

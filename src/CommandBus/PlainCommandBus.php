@@ -1,6 +1,11 @@
 <?php
 namespace SmoothPhp\CommandBus;
 
+use SmoothPhp\Contracts\CommandBus\Command;
+use SmoothPhp\Contracts\CommandBus\CommandBus;
+use SmoothPhp\Contracts\CommandBus\CommandTranslator;
+use SmoothPhp\Contracts\CommandBus\HandlerResolver;
+
 /**
  * Class PlainCommandBus
  * @package SmoothPhp\CommandBus
