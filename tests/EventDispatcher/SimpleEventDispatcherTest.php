@@ -1,6 +1,7 @@
 <?php
 namespace SmoothPhp\Tests\EventDispatcher;
 
+use ReflectionProperty;
 use SmoothPhp\EventDispatcher\SimpleEventDispatcher;
 
 
@@ -46,5 +47,25 @@ final class SimpleEventDispatcherTest extends \PHPUnit_Framework_TestCase
         $dispatcher->dispatch('test_does_not_run',[]);
 
         $this->assertEquals(0,$runCount);
+    }
+
+    /**
+     * @test
+     */
+    public function check_dispatcher_takes_callables()
+    {
+        $dispatcher = new SimpleEventDispatcher;
+        $refl = new ReflectionProperty(SimpleEventDispatcher::class, 'listeners');
+        $refl->setAccessible(true);
+
+        $this->assertEquals(0, count($refl->getValue($dispatcher)));
+
+        $dispatcher->addListener('foo.bar', [$this, 'fooBar']);
+
+        $this->assertEquals(1, count($refl->getValue($dispatcher)));
+    }
+
+    public function fooBar()
+    {
     }
 }

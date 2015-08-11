@@ -1,8 +1,6 @@
 <?php
 namespace SmoothPhp\Contracts\EventDispatcher;
 
-use Closure;
-
 /**
  * Class EventDispatcher
  * @package SmoothPhp\Contracts\EventDispatcher
@@ -18,9 +16,9 @@ interface EventDispatcher
     public function dispatch($eventName, array $arguments);
 
     /**
-     * @param string $eventName
-     * @param Closure $closure
+     * @param string   $eventName
+     * @param callable $callable
      * @return void
      */
-    public function addListener($eventName, Closure $closure);
+    public function addListener($eventName, callable $callable);
 }
