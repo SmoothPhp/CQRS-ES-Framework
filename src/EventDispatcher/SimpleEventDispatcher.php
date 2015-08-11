@@ -1,7 +1,6 @@
 <?php
 namespace SmoothPhp\EventDispatcher;
 
-use Closure;
 use SmoothPhp\Contracts\EventDispatcher\EventDispatcher;
 
 /**
@@ -31,15 +30,15 @@ final class SimpleEventDispatcher implements EventDispatcher
     }
 
     /**
-     * @param string $eventName
-     * @param Closure $closure
+     * @param string   $eventName
+     * @param callable $callable
      * @return void
      */
-    public function addListener($eventName, Closure $closure)
+    public function addListener($eventName, callable $callable)
     {
         if (!isset($this->listeners[$eventName])) {
             $this->listeners[$eventName] = array();
         }
-        $this->listeners[$eventName][] = $closure;
+        $this->listeners[$eventName][] = $callable;
     }
 }
