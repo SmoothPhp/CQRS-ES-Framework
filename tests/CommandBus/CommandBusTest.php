@@ -1,10 +1,9 @@
 <?php
 namespace SmoothPhp\Test\CommandBus;
 
-use SmoothPhp\CommandBus\CommandBus;
-use SmoothPhp\CommandBus\PlainCommandBus;
+use SmoothPhp\CommandBus\SimpleCommandBus;
 use SmoothPhp\CommandBus\SimpleCommandTranslator;
-use SmoothPhp\CommandBus\SimpleContainer;
+use SmoothPhp\CommandBus\SimpleCommandHandlerResolver;
 
 /**
  * Class CommandBusTest
@@ -14,13 +13,13 @@ use SmoothPhp\CommandBus\SimpleContainer;
 final class CommandBusTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var CommandBus
+     * @var SimpleCommandBus
      */
     private $commandBus;
 
     public function setup()
     {
-        $this->commandBus = new PlainCommandBus(new SimpleCommandTranslator(), new SimpleContainer());
+        $this->commandBus = new SimpleCommandBus(new SimpleCommandTranslator(), new SimpleCommandHandlerResolver());
     }
 
     /**
