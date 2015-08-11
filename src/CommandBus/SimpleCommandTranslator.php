@@ -1,6 +1,7 @@
 <?php
 namespace SmoothPhp\CommandBus;
 
+use SmoothPhp\CommandBus\Exception\HandlerNotFound;
 use SmoothPhp\Contracts\CommandBus\CommandTranslator;
 
 /**
@@ -16,6 +17,12 @@ final class SimpleCommandTranslator implements CommandTranslator
      */
     public function toCommandHandler($command)
     {
+        $handler = get_class($command) . 'Handler';
+
+        if (!class_exists($handler)) {
+            throw new HandlerNotFound(get_class($handler));
+        }
+
         return get_class($command) . 'Handler';
     }
 }
