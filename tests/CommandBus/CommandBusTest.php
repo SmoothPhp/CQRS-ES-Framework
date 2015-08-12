@@ -1,9 +1,11 @@
 <?php
 namespace SmoothPhp\Test\CommandBus;
 
+use SmoothPhp\CommandBus\Exception\HandlerNotFound;
 use SmoothPhp\CommandBus\SimpleCommandBus;
 use SmoothPhp\CommandBus\SimpleCommandTranslator;
 use SmoothPhp\CommandBus\SimpleCommandHandlerResolver;
+use SmoothPhp\Test\CommandBus\Helpers\TestCommandWithoutHandler;
 
 /**
  * Class CommandBusTest
@@ -29,6 +31,17 @@ final class CommandBusTest extends \PHPUnit_Framework_TestCase
     {
         $command = new TestCommand();
 
+        $this->commandBus->execute($command);
+    }
+
+    /**
+     * @test
+     */
+    public function exception_on_missing_handler()
+    {
+        $command = new TestCommandWithoutHandler();
+
+        $this->setExpectedException(HandlerNotFound::class,'Handler for command [SmoothPhp\Test\CommandBus\Helpers\TestCommandWithoutHandlerHandler] not found');
         $this->commandBus->execute($command);
     }
 }
