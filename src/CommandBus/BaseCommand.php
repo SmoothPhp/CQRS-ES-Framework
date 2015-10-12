@@ -1,7 +1,7 @@
 <?php
 namespace SmoothPhp\CommandBus;
 
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 use SmoothPhp\Contracts\CommandBus\Command;
 
 /**
