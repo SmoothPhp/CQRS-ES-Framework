@@ -31,4 +31,12 @@ abstract class BaseCommand implements Command
     {
         return get_class($this) . ':' . $this->commandId;
     }
+
+    /**
+     * @return string
+     */
+    public function getCommandId()
+    {
+        return $this->commandId;
+    }
 }
