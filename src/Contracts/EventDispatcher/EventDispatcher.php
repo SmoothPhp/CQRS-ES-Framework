@@ -21,4 +21,10 @@ interface EventDispatcher
      * @return void
      */
     public function addListener($eventName, callable $callable);
+
+    /**
+     * @param Subscriber $subscriber
+     * @return void
+     */
+    public function addSubscriber(Subscriber $subscriber);
 }

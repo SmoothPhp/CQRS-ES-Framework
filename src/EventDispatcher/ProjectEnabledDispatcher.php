@@ -2,18 +2,34 @@
 namespace SmoothPhp\EventDispatcher;
 
 use SmoothPhp\Contracts\EventDispatcher\EventDispatcher;
+use SmoothPhp\Contracts\EventDispatcher\Projection;
 use SmoothPhp\Contracts\EventDispatcher\Subscriber;
 
 /**
- * Class SimpleEventDispatcher
- * @author Simon Bennett <simon@smoothphp.com>
+ * Class ProjectEnabledDispatcher
+ * @package SmoothPhp\EventDispatcher
+ * @author Simon Bennett <simon@bennett.im>
  */
-final class SimpleEventDispatcher implements EventDispatcher
+final class ProjectEnabledDispatcher implements EventDispatcher
 {
     /**
      * @var array
      */
     private $listeners = [];
+
+    /**
+     * @var bool
+     */
+    private $runProjectionsOnly;
+
+    /**
+     * ProjectEnabledDispatcher constructor.
+     * @param bool $runProjectionsOnly
+     */
+    public function __construct($runProjectionsOnly = false)
+    {
+        $this->runProjectionsOnly = $runProjectionsOnly;
+    }
 
     /**
      * @param string $eventName
@@ -26,12 +42,15 @@ final class SimpleEventDispatcher implements EventDispatcher
             return;
         }
         foreach ($this->listeners[$eventName] as $listener) {
+            if ($this->runProjectionsOnly && !$listener instanceof Projection) {
+                continue;
+            }
             call_user_func_array($listener, $arguments);
         }
     }
 
     /**
-     * @param string   $eventName
+     * @param string $eventName
      * @param callable $callable
      * @return void
      */
@@ -42,6 +61,7 @@ final class SimpleEventDispatcher implements EventDispatcher
         }
         $this->listeners[$eventName][] = $callable;
     }
+
 
     /**
      * @param Subscriber $subscriber

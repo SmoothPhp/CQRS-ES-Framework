@@ -8,8 +8,8 @@
 interface CommandHandlerResolver
 {
     /**
-     * @param string $handlerId     The command handler ID
+     * @param string $className     The command handler
      * @return mixed                The command handler
      */
-    public function make($handlerId);
+    public function make($className);
 }
