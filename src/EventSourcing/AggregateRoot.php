@@ -63,7 +63,7 @@ abstract class AggregateRoot implements AggregateRootInterface
     }
 
     /**
-     * @return mixed
+     * @return DomainEventStream
      */
     public function getUncommittedEvents()
     {
