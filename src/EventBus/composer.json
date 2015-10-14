@@ -1,0 +1,38 @@
+{
+  "name": "smoothphp/eventbus",
+  "description": "Smooth Php Event Bus",
+  "keywords": [
+    "smooth php",
+    "event bus"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Simon Bennett",
+      "email": "simon@bennett.im",
+      "homepage": "https://smoothphp.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/SmoothPhp/CQRS-ES-Framework/issues",
+    "source": "https://github.com/SmoothPhp/CQRS-ES-Framework"
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "smoothphp/contract": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SmoothPhp\\EventBus\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
