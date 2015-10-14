@@ -1,0 +1,38 @@
+{
+  "name": "smoothphp/eventdispatcher",
+  "description": "Smooth Php Event Dispatcher",
+  "keywords": [
+    "smooth php",
+    "event dispatcher"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Simon Bennett",
+      "email": "simon@smoothphp.com",
+      "homepage": "https://smoothphp.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/SmoothPhp/CQRS-ES-Framework/issues",
+    "source": "https://github.com/SmoothPhp/CQRS-ES-Framework"
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "smoothphp/contract": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SmoothPhp\\EventDispatcher\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}

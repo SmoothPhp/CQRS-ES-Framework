@@ -42,7 +42,7 @@ final class ProjectEnabledDispatcher implements EventDispatcher
             return;
         }
         foreach ($this->listeners[$eventName] as $listener) {
-            if ($this->runProjectionsOnly && !$listener instanceof Projection) {
+            if ($this->runProjectionsOnly && (is_array($listener) && !$listener[0] instanceof Projection)) {
                 continue;
             }
             call_user_func_array($listener, $arguments);
