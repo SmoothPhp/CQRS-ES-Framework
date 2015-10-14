@@ -15,7 +15,7 @@ abstract class BaseCommand implements Command
     /**
      * @var string
      */
-    public $commandId;
+    private $commandId;
 
     /**
      * Give the command a Uuid, Used to logging and auditing
