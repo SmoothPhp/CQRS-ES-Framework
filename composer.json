@@ -19,7 +19,8 @@
   ],
   "require": {
     "php": ">=5.5.0",
-    "ramsey/uuid": "~3.0"
+    "ramsey/uuid": "~3.0",
+    "nesbot/carbon": "~1.19"
   },
   "replace": {
     "smoothphp/commandbus": "self.version"
