@@ -1,9 +1,9 @@
 {
-  "name": "smoothphp/eventdispatcher",
-  "description": "Smooth Php Event Dispatcher",
+  "name": "smoothphp/eventbus",
+  "description": "Smooth Php Event Bus",
   "keywords": [
     "smooth php",
-    "event dispatcher"
+    "event bus"
   ],
   "license": "MIT",
   "authors": [
@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "SmoothPhp\\EventDispatcher\\": "src"
+      "SmoothPhp\\EventBus\\": ""
     }
   },
   "extra": {

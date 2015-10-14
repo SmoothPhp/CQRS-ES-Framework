@@ -8,7 +8,7 @@ use SmoothPhp\EventDispatcher\SimpleEventDispatcher;
 /**
  * Class SimpleEventDispatcherTest
  * @package SmoothPhp\Tests\EventDispatcher
- * @author Simon Bennett <simon@smoothphp.com>
+ * @author Simon Bennett <simon@bennett.im>
  */
 final class SimpleEventDispatcherTest extends \PHPUnit_Framework_TestCase
 {

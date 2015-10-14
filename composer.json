@@ -12,14 +12,15 @@
   "authors": [
     {
       "name": "Simon Bennett",
-      "email": "simon@smoothphp.com",
+      "email": "simon@bennett.im",
       "homepage": "https://smoothphp.com",
       "role": "Developer"
     }
   ],
   "require": {
     "php": ">=5.5.0",
-    "ramsey/uuid": "~3.0"
+    "ramsey/uuid": "~3.0",
+    "nesbot/carbon": "~1.19"
   },
   "replace": {
     "smoothphp/commandbus": "self.version"

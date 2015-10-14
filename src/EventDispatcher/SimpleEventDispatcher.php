@@ -6,7 +6,7 @@ use SmoothPhp\Contracts\EventDispatcher\Subscriber;
 
 /**
  * Class SimpleEventDispatcher
- * @author Simon Bennett <simon@smoothphp.com>
+ * @author Simon Bennett <simon@bennett.im>
  */
 final class SimpleEventDispatcher implements EventDispatcher
 {
