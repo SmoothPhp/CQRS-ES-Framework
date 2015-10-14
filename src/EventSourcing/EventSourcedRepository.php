@@ -39,8 +39,8 @@ abstract class EventSourcedRepository
     abstract protected function getAggregateType();
 
     /**
-     * @param MemberId $id
-     * @return Member
+     * @param string $id
+     * @return AggregateRootInterface
      */
     public function load($id)
     {
