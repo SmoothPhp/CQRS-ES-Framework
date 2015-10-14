@@ -1,0 +1,38 @@
+{
+  "name": "smoothphp/domain",
+  "description": "Smooth Php Domain",
+  "keywords": [
+    "smooth php",
+    "domain"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Simon Bennett",
+      "email": "simon@bennett.im",
+      "homepage": "https://smoothphp.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/SmoothPhp/CQRS-ES-Framework/issues",
+    "source": "https://github.com/SmoothPhp/CQRS-ES-Framework"
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "smoothphp/contract": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SmoothPhp\\Domain\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
