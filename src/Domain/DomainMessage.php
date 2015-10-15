@@ -11,6 +11,7 @@ use SmoothPhp\Contracts\Domain\DomainMessage as DomainMessageInterface;
 final class DomainMessage implements DomainMessageInterface
 {
     /**
+     * 
      * @var int
      */
     private $playHead;
