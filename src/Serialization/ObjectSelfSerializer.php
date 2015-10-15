@@ -1,8 +1,9 @@
 <?php
 namespace SmoothPhp\Serialization;
 
-use SmoothPhp\Contracts\Serialization\Serializable;
 use SmoothPhp\Contracts\Serialization\Serializer;
+use SmoothPhp\Contracts\Serialization\Serializable;
+use SmoothPhp\Serialization\Exception\SerializationException;
 
 /**
  * Class ObjectSelfSerializer
