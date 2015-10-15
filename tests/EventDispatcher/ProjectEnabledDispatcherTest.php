@@ -2,6 +2,7 @@
 namespace SmoothPhp\Tests\EventDispatcher;
 
 use SmoothPhp\Contracts\EventDispatcher\Projection;
+use SmoothPhp\Contracts\EventDispatcher\Subscriber;
 use SmoothPhp\EventDispatcher\ProjectEnabledDispatcher;
 
 /**
@@ -55,6 +56,7 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(2, $runCount);
     }
+
     /**
      * @test
      */
@@ -84,7 +86,7 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
         $noneProjectionListener = new NoneProjectionOnlyListener();
 
         $dispatcher->addListener('test', [$projectionListener, 'handleEvent']);
-        $dispatcher->addListener('test',[$noneProjectionListener,'handleEvent']);
+        $dispatcher->addListener('test', [$noneProjectionListener, 'handleEvent']);
 
         $this->assertEquals(0, $projectionListener->runCount);
         $this->assertEquals(0, $noneProjectionListener->runCount);
@@ -95,6 +97,22 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $noneProjectionListener->runCount);
 
 
+    }
+
+    /**
+     * @test
+     */
+    public function check_projection_dispatcher_subscribe()
+    {
+        $dispatcher = new ProjectEnabledDispatcher();
+
+        $testListener = new  SubscriberTest();
+
+        $dispatcher->addSubscriber($testListener);
+
+        $dispatcher->dispatch('test', []);
+
+        $this->assertEquals(1, $testListener->runCount);
     }
 
 
@@ -109,6 +127,7 @@ final class ProjectionOnlyListener implements Projection
         $this->runCount++;
     }
 }
+
 final class NoneProjectionOnlyListener
 {
     public $runCount = 0;
@@ -116,5 +135,23 @@ final class NoneProjectionOnlyListener
     public function handleEvent()
     {
         $this->runCount++;
+    }
+}
+
+final class SubscriberTest implements Subscriber
+{
+    public $runCount = 0;
+
+    public function run()
+    {
+        $this->runCount++;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSubscribedEvents()
+    {
+        return ['test' => ['run']];
     }
 }

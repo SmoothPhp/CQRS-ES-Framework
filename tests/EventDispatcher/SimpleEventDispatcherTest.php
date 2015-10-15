@@ -8,7 +8,7 @@ use SmoothPhp\EventDispatcher\SimpleEventDispatcher;
 /**
  * Class SimpleEventDispatcherTest
  * @package SmoothPhp\Tests\EventDispatcher
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@smoothphp.com>
  */
 final class SimpleEventDispatcherTest extends \PHPUnit_Framework_TestCase
 {
@@ -67,5 +67,20 @@ final class SimpleEventDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function fooBar()
     {
+    }
+    /**
+     * @test
+     */
+    public function check_simple_dispatcher_subscribe()
+    {
+        $dispatcher = new SimpleEventDispatcher();
+
+        $testListener = new  SubscriberTest();
+
+        $dispatcher->addSubscriber($testListener);
+
+        $dispatcher->dispatch('test', []);
+
+        $this->assertEquals(1, $testListener->runCount);
     }
 }
