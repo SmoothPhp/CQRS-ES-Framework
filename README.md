@@ -41,6 +41,7 @@ If you discover any security related issues, please email simon.bennett@smoothph
 ## Credits
 
 - [Simon Bennett][link-author]
+- [Jrdn Hannah][https://github.com/jrdnhannah]
 - [All Contributors][link-contributors]
 
 ## License

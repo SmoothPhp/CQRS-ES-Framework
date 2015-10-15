@@ -1,7 +1,8 @@
 <?php
 namespace SmoothPhp\CommandBus;
 
-use Rhumsaa\Uuid\Uuid;
+
+use Ramsey\Uuid\Uuid;
 use SmoothPhp\Contracts\CommandBus\Command;
 
 /**
@@ -14,7 +15,7 @@ abstract class BaseCommand implements Command
     /**
      * @var string
      */
-    public $commandId;
+    private $commandId;
 
     /**
      * Give the command a Uuid, Used to logging and auditing
@@ -30,5 +31,13 @@ abstract class BaseCommand implements Command
     public function __toString()
     {
         return get_class($this) . ':' . $this->commandId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCommandId()
+    {
+        return $this->commandId;
     }
 }

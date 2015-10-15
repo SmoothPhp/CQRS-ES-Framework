@@ -20,7 +20,7 @@ final class SimpleCommandTranslator implements CommandTranslator
         $handler = get_class($command) . 'Handler';
 
         if (!class_exists($handler)) {
-            throw new HandlerNotFound(get_class($handler));
+            throw new HandlerNotFound($handler);
         }
 
         return get_class($command) . 'Handler';

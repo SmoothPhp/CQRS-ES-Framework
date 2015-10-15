@@ -4,7 +4,7 @@ namespace SmoothPhp\Contracts\EventDispatcher;
 /**
  * Class EventDispatcher
  * @package SmoothPhp\Contracts\EventDispatcher
- * @author Simon Bennett <simon@smoothphp.com>
+ * @author Simon Bennett <simon@bennett.im>
  */
 interface EventDispatcher
 {
@@ -21,4 +21,10 @@ interface EventDispatcher
      * @return void
      */
     public function addListener($eventName, callable $callable);
+
+    /**
+     * @param Subscriber $subscriber
+     * @return void
+     */
+    public function addSubscriber(Subscriber $subscriber);
 }
