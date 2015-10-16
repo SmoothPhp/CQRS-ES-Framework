@@ -29,7 +29,9 @@
     "smoothphp/eventbus": "self.version",
     "smoothphp/eventdispatcher": "self.version",
     "smoothphp/eventsourcing": "self.version",
-    "smoothphp/serialization": "self.version"
+    "smoothphp/serialization": "self.version",
+    "smoothphp/eventstore": "self.version"
+
   },
   "require-dev": {
     "phpunit/phpunit": "4.*"

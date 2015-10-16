@@ -7,3 +7,4 @@ git subsplit publish --heads="master 1.0" src/EventBus:git@github.com:SmoothPhp/
 git subsplit publish --heads="master 1.0" src/EventDispatcher:git@github.com:SmoothPhp/EventDispatcher.git
 git subsplit publish --heads="master 1.0" src/EventSourcing:git@github.com:SmoothPhp/EventSourcing.git
 git subsplit publish --heads="master 1.0" src/Serialization:git@github.com:SmoothPhp/Serialization.git
+git subsplit publish --heads="master 1.0" src/EventStore:git@github.com:SmoothPhp/EventStore.git
