@@ -20,7 +20,7 @@
   },
   "require": {
     "php": ">=5.5.0",
-    "smoothphp/contract": "dev-master"
+    "smoothphp/contracts": "1.0.*"
   },
   "require-dev": {
     "phpunit/phpunit": "4.*"

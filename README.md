@@ -1,4 +1,4 @@
-# Smooth Php CQRS Event Sourcing Framwork  
+# Smooth Php CQRS Event Sourcing Framework  
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -41,7 +41,7 @@ If you discover any security related issues, please email simon.bennett@smoothph
 ## Credits
 
 - [Simon Bennett][link-author]
-- [Jrdn Hannah][https://github.com/jrdnhannah]
+- [Jrdn Hannah](https://github.com/jrdnhannah)
 - [All Contributors][link-contributors]
 
 ## License
