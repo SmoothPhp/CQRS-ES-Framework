@@ -23,7 +23,13 @@
     "nesbot/carbon": "~1.19"
   },
   "replace": {
-    "smoothphp/commandbus": "self.version"
+    "smoothphp/commandbus": "self.version",
+    "smoothphp/contracts": "self.version",
+    "smoothphp/domain": "self.version",
+    "smoothphp/eventbus": "self.version",
+    "smoothphp/eventdispatcher": "self.version",
+    "smoothphp/eventsourcing": "self.version",
+    "smoothphp/serialization": "self.version"
   },
   "require-dev": {
     "phpunit/phpunit": "4.*"
