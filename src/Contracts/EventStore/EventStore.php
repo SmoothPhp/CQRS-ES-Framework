@@ -12,8 +12,8 @@ interface EventStore
 {
     /**
      * @param string $id
-     *
-     * @return DomainEventStreamInterface
+     * @return DomainEventStream
+     * @throws EventStreamNotFound
      */
     public function load($id);
 
