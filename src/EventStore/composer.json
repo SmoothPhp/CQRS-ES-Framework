@@ -1,0 +1,38 @@
+{
+  "name": "smoothphp/eventstore",
+  "description": "Smooth Php Event Store",
+  "keywords": [
+    "smooth php",
+    "event store"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Simon Bennett",
+      "email": "simon@bennett.im",
+      "homepage": "https://smoothphp.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/SmoothPhp/CQRS-ES-Framework/issues",
+    "source": "https://github.com/SmoothPhp/CQRS-ES-Framework"
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "smoothphp/contracts": "1.0.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SmoothPhp\\EventStore\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
