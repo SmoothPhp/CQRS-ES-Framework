@@ -28,7 +28,7 @@ final class ProjectEnabledDispatcher implements EventDispatcher
             return;
         }
         foreach ($this->listeners[$eventName] as $listener) {
-            if ($runProjectionsOnly && (is_array($listener) && !$listener[0] instanceof Projection)) {
+            if ($this->shouldListenerSkip($runProjectionsOnly, $listener)) {
                 continue;
             }
             call_user_func_array($listener, $arguments);
@@ -60,5 +60,15 @@ final class ProjectEnabledDispatcher implements EventDispatcher
                 $this->addListener(str_replace('\\', '.', $event), [$subscriber, $method]);
             }
         }
+    }
+
+    /**
+     * @param $runProjectionsOnly
+     * @param $listener
+     * @return bool
+     */
+    protected function shouldListenerSkip($runProjectionsOnly, $listener)
+    {
+        return $runProjectionsOnly && (is_array($listener) && !$listener[0] instanceof Projection);
     }
 }
