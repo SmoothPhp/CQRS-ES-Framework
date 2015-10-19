@@ -79,7 +79,7 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
      */
     public function check_dispatcher_only_fires_projectable_listeners()
     {
-        $dispatcher = new ProjectEnabledDispatcher(true);
+        $dispatcher = new ProjectEnabledDispatcher();
 
 
         $projectionListener = new ProjectionOnlyListener;
@@ -91,7 +91,7 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $projectionListener->runCount);
         $this->assertEquals(0, $noneProjectionListener->runCount);
 
-        $dispatcher->dispatch('test', []);
+        $dispatcher->dispatch('test', [],true);
 
         $this->assertEquals(1, $projectionListener->runCount);
         $this->assertEquals(0, $noneProjectionListener->runCount);

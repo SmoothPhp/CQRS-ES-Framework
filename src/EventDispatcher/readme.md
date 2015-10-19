@@ -34,18 +34,19 @@ final class NoneProjectionOnlyMemberThirdPartListener
     }
 }
 
-$dispatcher = new ProjectEnabledDispatcher(true);
+$dispatcher = new ProjectEnabledDispatcher();
 
 
 $dispatcher->addListener('MemberRegistered', [new ProjectionOnlyMemberMysqlListener, 'handleEvent']);
 $dispatcher->addListener('MemberRegistered',[new ProjectEnabledDispatcher,'handleEvent']);
 
-$dispatcher->dispatch('MemberRegistered', []);
+$dispatcher->dispatch('MemberRegistered', [],true);
 
 
 ```
 
-Due to the event dispatcher been set to projection only, the event dispatcher will not fire to any listener that does not implement Projection
+When calling the dispatch method we specify we only want to run projections. This enables us to change at run time. 
+When true the event dispatcher will not fire to any listener that does not implement Projection
 
 
 

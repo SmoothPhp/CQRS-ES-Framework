@@ -18,31 +18,17 @@ final class ProjectEnabledDispatcher implements EventDispatcher
     private $listeners = [];
 
     /**
-     * @var bool
-     */
-    private $runProjectionsOnly;
-
-    /**
-     * ProjectEnabledDispatcher constructor.
-     * @param bool $runProjectionsOnly
-     */
-    public function __construct($runProjectionsOnly = false)
-    {
-        $this->runProjectionsOnly = $runProjectionsOnly;
-    }
-
-    /**
      * @param string $eventName
      * @param array $arguments
-     * @return void
+     * @param bool $runProjectionsOnly
      */
-    public function dispatch($eventName, array $arguments)
+    public function dispatch($eventName, array $arguments, $runProjectionsOnly = false)
     {
         if (!isset($this->listeners[$eventName])) {
             return;
         }
         foreach ($this->listeners[$eventName] as $listener) {
-            if ($this->runProjectionsOnly && (is_array($listener) && !$listener[0] instanceof Projection)) {
+            if ($runProjectionsOnly && (is_array($listener) && !$listener[0] instanceof Projection)) {
                 continue;
             }
             call_user_func_array($listener, $arguments);
