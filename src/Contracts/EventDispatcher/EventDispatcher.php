@@ -11,9 +11,10 @@ interface EventDispatcher
     /**
      * @param string $eventName
      * @param array $arguments
+     * @param bool $runProjectionsOnly
      * @return void
      */
-    public function dispatch($eventName, array $arguments);
+    public function dispatch($eventName, array $arguments,$runProjectionsOnly = false);
 
     /**
      * @param string   $eventName
