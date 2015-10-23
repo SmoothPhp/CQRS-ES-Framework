@@ -41,7 +41,7 @@ final class CommandBusTest extends \PHPUnit_Framework_TestCase
     {
         $command = new TestCommandWithoutHandler();
 
-        $this->setExpectedException(HandlerNotFound::class,'Handler for command [SmoothPhp\Test\CommandBus\Helpers\TestCommandWithoutHandlerHandler] not found');
+        $this->setExpectedException(HandlerNotFound::class,'Handler for command [SmoothPhp\Test\CommandBus\Helpers\TestCommandWithoutHandler] not found');
         $this->commandBus->execute($command);
     }
 }
