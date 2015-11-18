@@ -18,19 +18,11 @@ abstract class BaseCommand implements Command
     private $commandId;
 
     /**
-     * Give the command a Uuid, Used to logging and auditing
-     */
-    public function __construct()
-    {
-        $this->commandId = (string)Uuid::uuid4();
-    }
-
-    /**
      * @return string
      */
     public function __toString()
     {
-        return get_class($this) . ':' . $this->commandId;
+        return get_class($this) . ':' . $this->getCommandId();
     }
 
     /**
@@ -38,6 +30,6 @@ abstract class BaseCommand implements Command
      */
     public function getCommandId()
     {
-        return $this->commandId;
+        return $this->commandId ?: $this->commandId = (string) Uuid::uuid4();
     }
 }
