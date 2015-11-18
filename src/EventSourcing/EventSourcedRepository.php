@@ -36,6 +36,9 @@ abstract class EventSourcedRepository
      */
     abstract protected function getPrefix();
 
+    /**
+     * @return string
+     */
     abstract protected function getAggregateType();
 
     /**

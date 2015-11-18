@@ -14,6 +14,6 @@ final class HandlerNotFound extends InvalidArgumentException
      */
     public function __construct($command)
     {
-        parent::__construct(sprintf('Handler for command [%s] not found', $command));
+        parent::__construct(sprintf('Handler for command [%s] not found', get_class($command)));
     }
 }
