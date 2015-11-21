@@ -152,19 +152,24 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
 
         $testListenerRunLast = new  SubscriberTestLast($invoked);
         $testListenerRunFirst = new  SubscriberTestFirst($invoked);
+        $testListenerRunMiddle = new  SubscriberTestMiddle($invoked);
 
         $testListenerRunFirst->setCallBack(function () use (&$invoked) {
             $invoked[] = 1;
         });
-        $testListenerRunLast->setCallBack(function () use (&$invoked) {
+        $testListenerRunMiddle->setCallBack(function () use (&$invoked) {
             $invoked[] = 2;
+        });
+        $testListenerRunLast->setCallBack(function () use (&$invoked) {
+            $invoked[] = 3;
         });
 
         $dispatcher->addSubscriber($testListenerRunLast);
         $dispatcher->addSubscriber($testListenerRunFirst);
+        $dispatcher->addSubscriber($testListenerRunMiddle);
 
         $dispatcher->dispatch('test', []);
-        $this->assertEquals(array('1', '2'), $invoked);
+        $this->assertEquals(array('1', '2','3'), $invoked);
 
     }
 
@@ -231,7 +236,8 @@ final class SubscriberTestFirst implements Subscriber
         return ['test' => ['run',10]];
     }
 }
-final class SubscriberTestLast  implements Subscriber
+
+final class SubscriberTestMiddle implements Subscriber
 {
     /**
      * @param $callback
@@ -251,6 +257,36 @@ final class SubscriberTestLast  implements Subscriber
      */
     public function getSubscribedEvents()
     {
-        return ['test' => ['run']];
+        return [
+            'test' => 'run'
+        ];
+    }
+}
+
+final class SubscriberTestLast implements Subscriber
+{
+    /**
+     * @param $callback
+     */
+    public function setCallBack($callback)
+    {
+        $this->callback = $callback;
+    }
+
+    public function run()
+    {
+        return call_user_func_array($this->callback, []);
+    }
+
+    /**
+     * @return array
+     */
+    public function getSubscribedEvents()
+    {
+        return [
+            'test' => [
+                ['run', -10]
+            ]
+        ];
     }
 }
