@@ -9,6 +9,9 @@ namespace SmoothPhp\Contracts\EventDispatcher;
 interface Subscriber
 {
     /**
+     * ['eventName' => 'methodName']
+     * ['eventName' => ['methodName', $priority]]
+     * ['eventName' => [['methodName1', $priority], array['methodName2']]
      * @return array
      */
     public function getSubscribedEvents();
