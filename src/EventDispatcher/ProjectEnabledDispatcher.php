@@ -27,25 +27,23 @@ final class ProjectEnabledDispatcher implements EventDispatcher
         if (!isset($this->listeners[$eventName])) {
             return;
         }
-        foreach ($this->listeners[$eventName] as $listener) {
-            if ($this->shouldListenerSkip($runProjectionsOnly, $listener)) {
-                continue;
+        foreach ($this->getListenersInOrder($eventName) as $listener) {
+            if ($this->listenerCanRun($runProjectionsOnly, $listener)) {
+                call_user_func_array($listener, $arguments);
             }
-            call_user_func_array($listener, $arguments);
         }
     }
 
     /**
      * @param string $eventName
      * @param callable $callable
-     * @return void
+     * @param int $priority
      */
-    public function addListener($eventName, callable $callable)
+    public function addListener($eventName, callable $callable, $priority = 0)
     {
-        if (!isset($this->listeners[$eventName])) {
-            $this->listeners[$eventName] = array();
-        }
-        $this->listeners[$eventName][] = $callable;
+        $this->listeners[$eventName][$priority][] = $callable;
+        unset($this->sorted[$eventName]);
+
     }
 
 
@@ -55,9 +53,15 @@ final class ProjectEnabledDispatcher implements EventDispatcher
      */
     public function addSubscriber(Subscriber $subscriber)
     {
-        foreach ($subscriber->getSubscribedEvents() as $event => $methods) {
-            foreach ($methods as $method) {
-                $this->addListener(str_replace('\\', '.', $event), [$subscriber, $method]);
+        foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
+            if (is_string($params)) {
+                $this->addListener($eventName, array($subscriber, $params));
+            } elseif (is_string($params[0])) {
+                $this->addListener($eventName, array($subscriber, $params[0]), isset($params[1]) ? $params[1] : 0);
+            } else {
+                foreach ($params as $listener) {
+                    $this->addListener($eventName, array($subscriber, $listener[0]), isset($listener[1]) ? $listener[1] : 0);
+                }
             }
         }
     }
@@ -67,8 +71,37 @@ final class ProjectEnabledDispatcher implements EventDispatcher
      * @param $listener
      * @return bool
      */
-    protected function shouldListenerSkip($runProjectionsOnly, $listener)
+    protected function listenerCanRun($runProjectionsOnly, $listener)
     {
-        return $runProjectionsOnly && (is_array($listener) && !$listener[0] instanceof Projection);
+        return !$runProjectionsOnly || (is_array($listener) && $listener[0] instanceof Projection);
+    }
+
+    /**
+     * @param $eventName
+     * @return array
+     */
+    protected function getListenersInOrder($eventName)
+    {
+        if (!isset($this->listeners[$eventName])) {
+            return [];
+        }
+        if (!isset($this->sorted[$eventName])) {
+            $this->sortListeners($eventName);
+        }
+
+        return $this->sorted[$eventName];
+    }
+
+    /**
+     * Sorts the internal list of listeners for the given event by priority.
+     *
+     * @param string $eventName The name of the event.
+     */
+    private function sortListeners($eventName)
+    {
+        $this->sorted[$eventName] = array();
+
+        krsort($this->listeners[$eventName]);
+        $this->sorted[$eventName] = call_user_func_array('array_merge', $this->listeners[$eventName]);
     }
 }
