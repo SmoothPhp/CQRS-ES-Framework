@@ -91,7 +91,7 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $projectionListener->runCount);
         $this->assertEquals(0, $noneProjectionListener->runCount);
 
-        $dispatcher->dispatch('test', [],true);
+        $dispatcher->dispatch('test', [], true);
 
         $this->assertEquals(1, $projectionListener->runCount);
         $this->assertEquals(0, $noneProjectionListener->runCount);
@@ -115,6 +115,63 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $testListener->runCount);
     }
 
+    /**
+     * @test
+     */
+    public function check_dispatcher_ordering_with_listeners()
+    {
+        $dispatcher = new ProjectEnabledDispatcher();
+
+        $didIRunFirst = false;
+
+        $dispatcher->addListener('foo',
+            function () use (&$didIRunFirst) {
+                $didIRunFirst = true;
+            },
+                                 0);
+
+        $dispatcher->addListener('foo',
+            function () use (&$didIRunFirst) {
+                $this->assertFalse($didIRunFirst);
+            },
+                                 1);
+
+        $dispatcher->dispatch('foo', []);
+
+
+    }
+
+    /**
+     * @test
+     */
+    public function check_dispatcher_ordering_with_subscribers()
+    {
+        $dispatcher = new ProjectEnabledDispatcher();
+
+        $invoked = [];
+
+        $testListenerRunLast = new  SubscriberTestLast($invoked);
+        $testListenerRunFirst = new  SubscriberTestFirst($invoked);
+        $testListenerRunMiddle = new  SubscriberTestMiddle($invoked);
+
+        $testListenerRunFirst->setCallBack(function () use (&$invoked) {
+            $invoked[] = 1;
+        });
+        $testListenerRunMiddle->setCallBack(function () use (&$invoked) {
+            $invoked[] = 2;
+        });
+        $testListenerRunLast->setCallBack(function () use (&$invoked) {
+            $invoked[] = 3;
+        });
+
+        $dispatcher->addSubscriber($testListenerRunLast);
+        $dispatcher->addSubscriber($testListenerRunFirst);
+        $dispatcher->addSubscriber($testListenerRunMiddle);
+
+        $dispatcher->dispatch('test', []);
+        $this->assertEquals(array('1', '2','3'), $invoked);
+
+    }
 
 }
 
@@ -153,5 +210,83 @@ final class SubscriberTest implements Subscriber
     public function getSubscribedEvents()
     {
         return ['test' => ['run']];
+    }
+}
+
+final class SubscriberTestFirst implements Subscriber
+{
+    /**
+     * @param $callback
+     */
+    public function setCallBack($callback)
+    {
+        $this->callback = $callback;
+    }
+
+    public function run()
+    {
+        return call_user_func_array($this->callback, []);
+    }
+
+    /**
+     * @return array
+     */
+    public function getSubscribedEvents()
+    {
+        return ['test' => ['run',10]];
+    }
+}
+
+final class SubscriberTestMiddle implements Subscriber
+{
+    /**
+     * @param $callback
+     */
+    public function setCallBack($callback)
+    {
+        $this->callback = $callback;
+    }
+
+    public function run()
+    {
+        return call_user_func_array($this->callback, []);
+    }
+
+    /**
+     * @return array
+     */
+    public function getSubscribedEvents()
+    {
+        return [
+            'test' => 'run'
+        ];
+    }
+}
+
+final class SubscriberTestLast implements Subscriber
+{
+    /**
+     * @param $callback
+     */
+    public function setCallBack($callback)
+    {
+        $this->callback = $callback;
+    }
+
+    public function run()
+    {
+        return call_user_func_array($this->callback, []);
+    }
+
+    /**
+     * @return array
+     */
+    public function getSubscribedEvents()
+    {
+        return [
+            'test' => [
+                ['run', -10]
+            ]
+        ];
     }
 }
