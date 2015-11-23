@@ -169,10 +169,24 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
         $dispatcher->addSubscriber($testListenerRunMiddle);
 
         $dispatcher->dispatch('test', []);
-        $this->assertEquals(array('1', '2','3'), $invoked);
+        $this->assertEquals(array('1', '2', '3'), $invoked);
 
     }
 
+    public function test_event_dot_notation()
+    {
+        $dispatcher = new ProjectEnabledDispatcher();
+
+        $invoked = false;
+        $dispatcher->addListener('test\\test',
+            function () use (&$invoked) {
+                $invoked = true;
+            });
+
+        $dispatcher->dispatch('test.test',[]);
+        $this->assertTrue($invoked);
+
+    }
 }
 
 final class ProjectionOnlyListener implements Projection
@@ -233,7 +247,7 @@ final class SubscriberTestFirst implements Subscriber
      */
     public function getSubscribedEvents()
     {
-        return ['test' => ['run',10]];
+        return ['test' => ['run', 10]];
     }
 }
 
