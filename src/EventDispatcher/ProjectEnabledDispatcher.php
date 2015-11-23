@@ -41,8 +41,9 @@ final class ProjectEnabledDispatcher implements EventDispatcher
      */
     public function addListener($eventName, callable $callable, $priority = 0)
     {
-        $this->listeners[$eventName][$priority][] = $callable;
-        unset($this->sorted[$eventName]);
+        $dotEventName = str_replace('\\', '.', $eventName);
+        $this->listeners[$dotEventName][$priority][] = $callable;
+        unset($this->sorted[$dotEventName]);
 
     }
 
