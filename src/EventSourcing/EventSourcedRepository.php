@@ -68,5 +68,4 @@ abstract class EventSourcedRepository
 
         $this->eventBus->publish($events);
     }
-
 }

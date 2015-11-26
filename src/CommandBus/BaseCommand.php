@@ -1,7 +1,6 @@
 <?php
 namespace SmoothPhp\CommandBus;
 
-
 use Ramsey\Uuid\Uuid;
 use SmoothPhp\Contracts\CommandBus\Command;
 
