@@ -26,6 +26,17 @@ final class SimpleEventBusTest extends \PHPUnit_Framework_TestCase
         $eventBus->publish(new DomainEventStream([new \SmoothPhp\Domain\DomainMessage('',0,new Metadata(),null,new DateTime())]));
         $this->assertEquals(1,$listener->runCount);
     }
+
+    /**
+     * Should not throw exception!
+     */
+    public function test_queue_automatically_initialised()
+    {
+        $bus = new SimpleEventBus();
+
+        $stream = new DomainEventStream([]);
+        $bus->publish($stream);
+    }
 }
 
 class EventBusListener implements EventListener
