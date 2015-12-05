@@ -1,8 +1,7 @@
 <?php
 namespace SmoothPhp\Contracts\EventSourcing;
 
-use SmoothPhp\Contracts\Domain\DomainMessage;
-
+use SmoothPhp\Contracts\Domain\DomainEventStream;
 
 /**
  * Interface AggregateRoot
@@ -11,7 +10,6 @@ use SmoothPhp\Contracts\Domain\DomainMessage;
  */
 interface AggregateRoot
 {
-
     /**
      * @return string
      */
