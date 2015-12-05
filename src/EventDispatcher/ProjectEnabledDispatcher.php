@@ -18,6 +18,11 @@ final class ProjectEnabledDispatcher implements EventDispatcher
     private $listeners = [];
 
     /**
+     * @var array
+     */
+    private $sorted = [];
+
+    /**
      * @param string $eventName
      * @param array $arguments
      * @param bool $runProjectionsOnly

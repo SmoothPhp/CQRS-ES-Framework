@@ -21,7 +21,7 @@ final class SimpleEventBus implements EventBus
     /**
      * @var DomainMessage[]
      */
-    private $queue;
+    private $queue = [];
 
     /**
      * @param $eventListener
