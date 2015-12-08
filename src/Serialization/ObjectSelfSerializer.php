@@ -4,6 +4,7 @@ namespace SmoothPhp\Serialization;
 use SmoothPhp\Contracts\Serialization\Serializer;
 use SmoothPhp\Contracts\Serialization\Serializable;
 use SmoothPhp\Serialization\Exception\SerializationException;
+use SmoothPhp\Serialization\Exception\SerializedClassDoesNotExist;
 
 /**
  * Class ObjectSelfSerializer
@@ -33,14 +34,18 @@ final class ObjectSelfSerializer implements Serializer
      */
     public function deserialize(array $serializedObject)
     {
-        if (! in_array(Serializable::class, class_implements($serializedObject['class']))) {
+        if (! class_exists($class = $serializedObject['class'])) {
+            throw new SerializedClassDoesNotExist("Class does not exist: [{$class}]");
+        }
+
+        if (! in_array(Serializable::class, class_implements($class))) {
             throw new SerializationException(
                 sprintf(
                     'Class \'%s\' does not implement Serializable',
-                    $serializedObject['class']
+                    $class
                 )
             );
         }
-        return $serializedObject['class']::deserialize($serializedObject['payload']);
+        return $class::deserialize($serializedObject['payload']);
     }
 }
