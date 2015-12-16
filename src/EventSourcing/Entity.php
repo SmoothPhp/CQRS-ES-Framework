@@ -10,7 +10,7 @@ use SmoothPhp\Contracts\EventSourcing\AggregateRoot as AggregateRootContract;
  */
 abstract class Entity implements \SmoothPhp\Contracts\EventSourcing\Entity
 {
-    /** @var AggregateRoot */
+    /** @var AggregateRootContract */
     private $aggregateRoot;
 
     /** @var \SmoothPhp\Contracts\EventSourcing\Entity[] */
