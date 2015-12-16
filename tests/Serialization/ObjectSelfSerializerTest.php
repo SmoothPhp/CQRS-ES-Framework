@@ -62,6 +62,18 @@ final class ObjectSelfSerializerTest extends TestCase
         $this->assertInstanceOf(SerializableObject::class, $object);
         $this->assertEquals('foo', $object->getFoo());
     }
+
+    /**
+     * @test
+     * @expectedException SmoothPhp\Serialization\Exception\SerializedClassDoesNotExist
+     */
+    public function it_should_throw_exception_on_non_existant_class()
+    {
+        $serializer = new ObjectSelfSerializer;
+        $data       = ['class' => 'Foo\Bar\Baz', 'payload' => ['foo' => 'bar']];
+
+        $object     = $serializer->deserialize($data);
+    }
 }
 
 final class SerializableObject implements Serializable
