@@ -2,6 +2,7 @@
 namespace SmoothPhp\EventSourcing;
 
 use SmoothPhp\Contracts\EventSourcing\AggregateRoot as AggregateRootInterface;
+use SmoothPhp\Contracts\EventSourcing\Entity;
 use SmoothPhp\Contracts\EventSourcing\Event;
 use SmoothPhp\Domain\DomainEventStream;
 use SmoothPhp\Domain\DomainMessage;
@@ -20,12 +21,15 @@ abstract class AggregateRoot implements AggregateRootInterface
 
     private $playHead = -1;
 
+    /** @var Entity[] */
+    private $children = [];
+
     /**
      * @param Event $event
      */
     public function apply(Event $event)
     {
-        $this->handle($event);
+        $this->handleRecursively($event);
 
         $this->playHead++;
         $this->uncommittedEvents[] = DomainMessage::recordNow(
@@ -49,6 +53,19 @@ abstract class AggregateRoot implements AggregateRootInterface
             return;
         }
         $this->$method($event);
+    }
+
+    /**
+     * @param Event $event
+     */
+    protected function handleRecursively(Event $event)
+    {
+        $this->handle($event);
+
+        foreach ($this->children as $child) {
+            $child->registerAggregateRoot($this);
+            $child->handleRecursively($event);
+        }
     }
 
     /**
@@ -83,5 +100,13 @@ abstract class AggregateRoot implements AggregateRootInterface
             $this->playHead++;
             $this->handle($message->getPayload());
         }
+    }
+
+    /**
+     * @param Entity $entity
+     */
+    public function addChildEntity(Entity $entity)
+    {
+        $this->children[] = $entity;
     }
 }

@@ -19,4 +19,9 @@ interface AggregateRoot
      * @return DomainEventStream
      */
     public function getUncommittedEvents();
+
+    /**
+     * @param Event $event
+     */
+    public function apply(Event $event);
 }
