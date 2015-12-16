@@ -2,7 +2,7 @@
 namespace SmoothPhp\EventSourcing;
 
 use SmoothPhp\Contracts\EventSourcing\AggregateRoot as AggregateRootInterface;
-use SmoothPhp\Contracts\EventSourcing\Entity;
+use SmoothPhp\Contracts\EventSourcing\Entity as EntityInterface;
 use SmoothPhp\Contracts\EventSourcing\Event;
 use SmoothPhp\Domain\DomainEventStream;
 use SmoothPhp\Domain\DomainMessage;
@@ -21,7 +21,7 @@ abstract class AggregateRoot implements AggregateRootInterface
 
     private $playHead = -1;
 
-    /** @var Entity[] */
+    /** @var EntityInterface[] */
     private $children = [];
 
     /**
@@ -103,9 +103,9 @@ abstract class AggregateRoot implements AggregateRootInterface
     }
 
     /**
-     * @param Entity $entity
+     * @param EntityInterface $entity
      */
-    public function addChildEntity(Entity $entity)
+    public function addChildEntity(EntityInterface $entity)
     {
         $this->children[] = $entity;
     }
