@@ -21,9 +21,6 @@ abstract class AggregateRoot implements AggregateRootInterface
 
     private $playHead = -1;
 
-    /** @var EntityInterface[] */
-    private $children = [];
-
     /**
      * @param Event $event
      */
@@ -62,7 +59,7 @@ abstract class AggregateRoot implements AggregateRootInterface
     {
         $this->handle($event);
 
-        foreach ($this->children as $child) {
+        foreach ($this->getChildren() as $child) {
             $child->registerAggregateRoot($this);
             $child->handleRecursively($event);
         }
@@ -103,10 +100,10 @@ abstract class AggregateRoot implements AggregateRootInterface
     }
 
     /**
-     * @param EntityInterface $entity
+     * @return EntityInterface[] $entity
      */
-    public function addChildEntity(EntityInterface $entity)
+    public function getChildren()
     {
-        $this->children[] = $entity;
+        return [];
     }
 }

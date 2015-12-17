@@ -13,9 +13,6 @@ abstract class Entity implements \SmoothPhp\Contracts\EventSourcing\Entity
     /** @var AggregateRootContract */
     private $aggregateRoot;
 
-    /** @var \SmoothPhp\Contracts\EventSourcing\Entity[] */
-    private $children = [];
-
     /**
      * @param Event $event
      * @throws Exception\AggregateRootAlreadyRegistered
@@ -24,7 +21,7 @@ abstract class Entity implements \SmoothPhp\Contracts\EventSourcing\Entity
     {
         $this->handle($event);
 
-        foreach ($this->children as $entity) {
+        foreach ($this->getChildren() as $entity) {
             $entity->registerAggregateRoot($this->aggregateRoot);
             $entity->handleRecursively($event);
         }
@@ -44,11 +41,11 @@ abstract class Entity implements \SmoothPhp\Contracts\EventSourcing\Entity
     }
 
     /**
-     * @param \SmoothPhp\Contracts\EventSourcing\Entity $entity
+     * @return \SmoothPhp\Contracts\EventSourcing\Entity[] $entity
      */
-    public function addChildEntity(\SmoothPhp\Contracts\EventSourcing\Entity $entity)
+    public function getChildren()
     {
-        $this->children[] = $entity;
+        return [];
     }
 
     /**

@@ -63,6 +63,18 @@ final class EntityTest extends \PHPUnit_Framework_TestCase
 
 class FooAggregate extends AggregateRoot
 {
+    private $children = [];
+
+    public function addChildEntity(\SmoothPhp\Contracts\EventSourcing\Entity $entity)
+    {
+        $this->children[] = $entity;
+    }
+
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
     public function foo()
     {
         $this->apply(new BarEvent);
@@ -79,6 +91,18 @@ class FooAggregate extends AggregateRoot
 
 class FooEntity extends Entity
 {
+    private $children = [];
+
+    public function addChildEntity(\SmoothPhp\Contracts\EventSourcing\Entity $entity)
+    {
+        $this->children[] = $entity;
+    }
+
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
     public function foo()
     {
         $this->apply(new BarEvent);
