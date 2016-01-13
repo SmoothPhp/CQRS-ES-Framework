@@ -95,7 +95,7 @@ abstract class AggregateRoot implements AggregateRootInterface
     {
         foreach ($stream as $message) {
             $this->playHead++;
-            $this->handle($message->getPayload());
+            $this->handleRecursively($message->getPayload());
         }
     }
 
