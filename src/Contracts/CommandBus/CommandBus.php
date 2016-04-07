@@ -10,7 +10,6 @@ interface CommandBus
 {
     /**
      * @param Command $command
-     * @return void
      */
     public function execute(Command $command);
 }

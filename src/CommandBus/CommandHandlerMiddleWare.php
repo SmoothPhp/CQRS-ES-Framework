@@ -2,16 +2,16 @@
 namespace SmoothPhp\CommandBus;
 
 use SmoothPhp\Contracts\CommandBus\Command;
-use SmoothPhp\Contracts\CommandBus\CommandBus;
-use SmoothPhp\Contracts\CommandBus\CommandTranslator;
+use SmoothPhp\Contracts\CommandBus\CommandBusMiddleware;
 use SmoothPhp\Contracts\CommandBus\CommandHandlerResolver;
+use SmoothPhp\Contracts\CommandBus\CommandTranslator;
 
 /**
  * Class PlainCommandBus
  * @package SmoothPhp\CommandBus
  * @author Simon Bennett <simon@bennett.im>
  */
-final class SimpleCommandBus implements CommandBus
+final class CommandHandlerMiddleWare implements CommandBusMiddleware
 {
     /** @var CommandTranslator */
     private $commandTranslator;
@@ -31,12 +31,13 @@ final class SimpleCommandBus implements CommandBus
 
     /**
      * @param Command $command
-     * @return void
+     * @param callable $next
+     * @return mixed|void
      */
-    public function execute(Command $command)
+    public function execute(Command $command, callable $next)
     {
         $handler = $this->commandTranslator->toCommandHandler($command);
 
-        $this->handlerResolver->make($handler)->handle($command);
+        return $this->handlerResolver->make($handler)->handle($command);
     }
 }
