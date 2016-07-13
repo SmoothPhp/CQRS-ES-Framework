@@ -22,4 +22,18 @@ interface EventStore
      * @param DomainEventStream $eventStream
      */
     public function append($id, DomainEventStream $eventStream);
+
+    /**
+     * @param string[] $eventTypes
+     * @return int
+     */
+    public function getEventCountByTypes($eventTypes);
+
+    /**
+     * @param string[] $eventTypes
+     * @param int $skip
+     * @param int $take
+     * @return DomainEventStream
+     */
+    public function getEventsByType($eventTypes, $skip, $take);
 }
