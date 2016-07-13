@@ -120,6 +120,24 @@ class MockStore implements EventStore
 
         return;
     }
+
+    /**
+     * @param string[] $eventTypes
+     * @return int
+     */
+    public function getEventCountByTypes($eventTypes)
+    {
+    }
+
+    /**
+     * @param string[] $eventTypes
+     * @param int $skip
+     * @param int $take
+     * @return DomainEventStream
+     */
+    public function getEventsByType($eventTypes, $skip, $take)
+    {
+    }
 }
 
 class MockEventBus implements EventBus
