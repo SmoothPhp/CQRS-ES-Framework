@@ -17,8 +17,7 @@ $ composer require smoothphp/crqs-es-framework
 
 ## Usage
 
-``` 
-```
+ * [Command Bus](src/CommandBus/readme.md)
 
 ## Change log
 
