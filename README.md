@@ -18,6 +18,7 @@ $ composer require smoothphp/crqs-es-framework
 ## Usage
 
  * [Command Bus](src/CommandBus/readme.md)
+ * [Serialization](src/Serialization/README.md)
 
 ## Change log
 
