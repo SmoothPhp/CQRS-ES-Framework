@@ -2,7 +2,6 @@
 namespace SmoothPhp\EventDispatcher;
 
 use SmoothPhp\Contracts\EventDispatcher\EventDispatcher;
-use SmoothPhp\Contracts\EventDispatcher\Projection;
 use SmoothPhp\Contracts\EventDispatcher\Subscriber;
 
 /**
@@ -33,9 +32,7 @@ final class ProjectEnabledDispatcher implements EventDispatcher
             return;
         }
         foreach ($this->getListenersInOrder($eventName) as $listener) {
-            if ($this->listenerCanRun($runProjectionsOnly, $listener)) {
-                call_user_func_array($listener, $arguments);
-            }
+            call_user_func_array($listener, $arguments);
         }
     }
 
@@ -70,16 +67,6 @@ final class ProjectEnabledDispatcher implements EventDispatcher
                 }
             }
         }
-    }
-
-    /**
-     * @param $runProjectionsOnly
-     * @param $listener
-     * @return bool
-     */
-    protected function listenerCanRun($runProjectionsOnly, $listener)
-    {
-        return !$runProjectionsOnly || (is_array($listener) && $listener[0] instanceof Projection);
     }
 
     /**
