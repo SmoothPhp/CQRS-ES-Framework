@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+#3.1.0
+* Deprecated Projection interface. Will remove in next major release
+
+#3.0.1
+* Added exception for duplicate aggregate play head
+
+#3.0.0
+* Change event store to allow better production rebuilding
+
+# 2.0.0
+* Middleware on command bus
 # 1.1.2
 
 * Event Dispatcher how has priority
