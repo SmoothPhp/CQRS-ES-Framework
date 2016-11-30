@@ -94,8 +94,7 @@ final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
         $dispatcher->dispatch('test', [], true);
 
         $this->assertEquals(1, $projectionListener->runCount);
-        $this->assertEquals(0, $noneProjectionListener->runCount);
-
+        $this->assertEquals(1, $noneProjectionListener->runCount);
 
     }
 

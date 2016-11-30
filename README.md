@@ -12,12 +12,13 @@
 Via Composer
 
 ``` bash
-$ composer require smoothphp/crqs-es-framework
+$ composer require smoothphp/cqrs-es-framework
 ```
 
 ## Usage
 
  * [Command Bus](src/CommandBus/readme.md)
+ * [Serialization](src/Serialization/README.md)
 
 ## Change log
 
@@ -58,6 +59,6 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-travis]: https://travis-ci.org/SmoothPhp/CQRS-ES-Framework
 [link-scrutinizer]: https://scrutinizer-ci.com/g/SmoothPhp/CQRS-ES-Framework/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/SmoothPhp/CQRS-ES-Framework
-[link-downloads]: https://packagist.org/packages/SmoothPhp/CQRS-ES-Framework
+[link-downloads]: https://packagist.org/packages/smoothphp/cqrs-es-framework
 [link-author]: https://github.com/mrsimonbennett
 [link-contributors]: ../../contributors
