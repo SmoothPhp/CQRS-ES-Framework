@@ -1,6 +1,7 @@
 #CQRS Framework Changelog
 
 ## Unreleased
+* Upgraded to php7
 
 #3.1.0
 * Deprecated Projection interface. Will remove in next major release
