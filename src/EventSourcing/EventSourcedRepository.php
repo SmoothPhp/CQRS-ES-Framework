@@ -44,13 +44,14 @@ abstract class EventSourcedRepository
     /**
      * @param string $id
      * @return AggregateRootInterface
+     * @throws \SmoothPhp\EventStore\EventStreamNotFound
      */
     public function load($id)
     {
         $domainEvents = $this->eventStore->load($this->getPrefix() . $id);
         $aggregateClassName = $this->getAggregateType();
 
-        $aggregate = new $aggregateClassName();
+        $aggregate = unserialize(sprintf( 'O:%d:"%s":0:{}',strlen($aggregateClassName), $aggregateClassName));
         $aggregate->initializeState($domainEvents);
 
         return $aggregate;
