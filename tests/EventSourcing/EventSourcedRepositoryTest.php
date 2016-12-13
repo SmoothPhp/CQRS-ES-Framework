@@ -114,7 +114,7 @@ class MockStore implements EventStore
                                                        ]);
     }
 
-    public function append($id, DomainEventStream $eventStream)
+    public function append($id, DomainEventStream $eventStream,bool $ignorePlayhead = false)
     {
         $this->appendRunCount++;
 

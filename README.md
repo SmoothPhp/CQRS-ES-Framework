@@ -7,7 +7,15 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
+A framework for creating CQRS and Event Sourced systems. This is the base framework you can use to 
+create your own implementation of the interfaces or you can use on of the ready built packages
+
+- [SmoothPHP laravel](https://github.com/SmoothPhp/CQRS-ES-Framework-Laravel)
+
+
 ## Install
+
+
 
 Via Composer
 
@@ -62,3 +70,9 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-downloads]: https://packagist.org/packages/smoothphp/cqrs-es-framework
 [link-author]: https://github.com/mrsimonbennett
 [link-contributors]: ../../contributors
+
+## Support
+SmoothPHP is a PixelatedCrow.com Product. 
+
+For commercial support please contact smoothphp@pixelatedcrow.com
+![https://i.imgur.com/iqFWqYD.png](https://i.imgur.com/iqFWqYD.png)

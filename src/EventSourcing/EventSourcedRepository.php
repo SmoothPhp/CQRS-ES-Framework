@@ -44,13 +44,14 @@ abstract class EventSourcedRepository
     /**
      * @param string $id
      * @return AggregateRootInterface
+     * @throws \SmoothPhp\EventStore\EventStreamNotFound
      */
     public function load($id)
     {
         $domainEvents = $this->eventStore->load($this->getPrefix() . $id);
         $aggregateClassName = $this->getAggregateType();
 
-        $aggregate = new $aggregateClassName();
+        $aggregate = unserialize(sprintf( 'O:%d:"%s":0:{}',strlen($aggregateClassName), $aggregateClassName));
         $aggregate->initializeState($domainEvents);
 
         return $aggregate;
@@ -62,9 +63,27 @@ abstract class EventSourcedRepository
      */
     public function save(AggregateRootInterface $aggregate)
     {
+        $this->saveAggregate($aggregate,false);
+    }
+
+    /**
+     * @param AggregateRootInterface $aggregate
+     * @return void
+     */
+    public function saveWithoutPlayheadCheck(AggregateRootInterface $aggregate)
+    {
+        $this->saveAggregate($aggregate,true);
+    }
+
+    /**
+     * @param AggregateRootInterface $aggregate
+     * @param bool $ignorePlayhead
+     */
+    private function saveAggregate(AggregateRootInterface $aggregate,bool $ignorePlayhead = false)
+    {
         $events = $aggregate->getUncommittedEvents();
 
-        $this->eventStore->append($aggregate->getAggregateRootId(), $events);
+        $this->eventStore->append($aggregate->getAggregateRootId(), $events,$ignorePlayhead);
 
         $this->eventBus->publish($events);
     }

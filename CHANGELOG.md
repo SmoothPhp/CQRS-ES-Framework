@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+
+#4.0.0
+* Upgraded to php7
+* Don't use constructors to build classes in repositories
+* Add option to ignore playheads
+
 #3.1.0
 * Deprecated Projection interface. Will remove in next major release
 
