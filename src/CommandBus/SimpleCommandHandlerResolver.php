@@ -5,7 +5,7 @@ use SmoothPhp\Contracts\CommandBus\CommandHandlerResolver;
 /**
  * Class SimpleCommandHandlerResolver
  * @package SmoothPhp\CommandBus
- * @author Simon Bennett <simon.bennett@smoothphp.com>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 final class SimpleCommandHandlerResolver implements CommandHandlerResolver
 {

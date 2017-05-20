@@ -4,7 +4,7 @@ namespace SmoothPhp\Contracts\Serialization;
 /**
  * Interface ObjectSelfSerializer
  * @package SmoothPhp\Contracts\Serialization
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface Serializer
 {

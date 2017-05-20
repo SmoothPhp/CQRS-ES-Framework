@@ -8,7 +8,7 @@ use SmoothPhp\EventStore\EventStreamNotFound;
 /**
  * Interface EventStore
  * @package SmoothPhp\EventStore
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface EventStore
 {

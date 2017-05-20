@@ -7,7 +7,7 @@ use SmoothPhp\Contracts\Domain\DomainEventStream as DomainEventStreamInterface;
 /**
  * Class DomainEventStream
  * @package SmoothPhp\Domain
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 final class DomainEventStream implements DomainEventStreamInterface
 {

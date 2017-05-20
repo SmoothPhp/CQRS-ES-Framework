@@ -8,7 +8,7 @@ use SmoothPhp\Serialization\Exception\SerializationException;
 /**
  * Class ObjectSelfSerializer
  * @package SmoothPhp\Serialization
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 final class ObjectSelfSerializer implements Serializer
 {

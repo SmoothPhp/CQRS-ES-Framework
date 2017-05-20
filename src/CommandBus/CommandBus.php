@@ -8,7 +8,7 @@ use SmoothPhp\Contracts\CommandBus\CommandBusMiddleware;
 /**
  * Class CommandBus
  * @package SmoothPhp\CommandBus
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 final class CommandBus implements \SmoothPhp\Contracts\CommandBus\CommandBus
 {

@@ -6,7 +6,7 @@ use SmoothPhp\Contracts\Domain\DomainMessage;
 /**
  * Interface EventSubscribed
  * @package SmoothPhp\Contracts\EventBus
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface EventListener
 {

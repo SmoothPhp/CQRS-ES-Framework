@@ -2,7 +2,7 @@
 namespace SmoothPhp\Contracts\Projections;
 /**
  * Interface ProjectionServiceProvider
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface ProjectionServiceProvider
 {

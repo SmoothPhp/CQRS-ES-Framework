@@ -10,7 +10,7 @@ use SmoothPhp\Domain\Metadata;
 
 /**
  * Class AggregateRoot
- * @author Simon Bennett <simon@smoothphp.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 abstract class AggregateRoot implements AggregateRootInterface
 {

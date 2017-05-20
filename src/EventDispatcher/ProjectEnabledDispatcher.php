@@ -7,7 +7,7 @@ use SmoothPhp\Contracts\EventDispatcher\Subscriber;
 /**
  * Class ProjectEnabledDispatcher
  * @package SmoothPhp\EventDispatcher
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 final class ProjectEnabledDispatcher implements EventDispatcher
 {

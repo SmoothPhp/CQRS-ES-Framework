@@ -4,7 +4,7 @@ namespace SmoothPhp\Contracts\EventDispatcher;
 /**
  * Class EventDispatcher
  * @package SmoothPhp\Contracts\EventDispatcher
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface EventDispatcher
 {

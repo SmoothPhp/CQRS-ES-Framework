@@ -9,7 +9,7 @@ use SmoothPhp\Contracts\EventBus\EventListener;
 /**
  * Class SimpleEventBus
  * @package SmoothPhp\EventBus
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 final class SimpleEventBus implements EventBus
 {

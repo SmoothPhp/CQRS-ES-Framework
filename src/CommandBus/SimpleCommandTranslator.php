@@ -7,7 +7,7 @@ use SmoothPhp\Contracts\CommandBus\CommandTranslator;
 /**
  * Class SimpleCommandTranslator
  * @package SmoothPhp\CommandBus
- * @author Simon Bennett <simon.bennett@smoothphp.com>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 final class SimpleCommandTranslator implements CommandTranslator
 {

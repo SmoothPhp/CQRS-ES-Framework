@@ -6,7 +6,7 @@ use SmoothPhp\Contracts\Domain\DomainEventStream;
 /**
  * Interface EventBus
  * @package SmoothPhp\Contracts\EventBus
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface EventBus
 {

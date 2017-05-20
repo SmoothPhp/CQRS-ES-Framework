@@ -6,7 +6,7 @@ use SmoothPhp\Contracts\Domain\DomainEventStream;
 /**
  * Interface AggregateRoot
  * @package SmoothPhp\Contracts\EventSourcing
- * @author Simon Bennett <simon@smoothphp.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface AggregateRoot
 {

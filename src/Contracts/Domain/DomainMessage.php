@@ -6,7 +6,7 @@ use SmoothPhp\Domain\DateTime;
 /**
  * Interface DomainMessage
  * @package SmoothPhp\Contracts\Domain
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface DomainMessage
 {

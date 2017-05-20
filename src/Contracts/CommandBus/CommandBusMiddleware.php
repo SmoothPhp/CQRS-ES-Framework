@@ -4,7 +4,7 @@ namespace SmoothPhp\Contracts\CommandBus;
 /**
  * Class CommandBusMiddleware
  * @package SmoothPhp\Contracts\CommandBus
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface CommandBusMiddleware
 {

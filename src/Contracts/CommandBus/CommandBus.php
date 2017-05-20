@@ -4,7 +4,7 @@ namespace SmoothPhp\Contracts\CommandBus;
 /**
  * Interface CommandBus
  * @package SmoothPhp\CommandBus
- * @author Simon Bennett <simon.bennett@smoothphp.com>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 interface CommandBus
 {

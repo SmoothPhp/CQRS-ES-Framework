@@ -4,7 +4,7 @@ namespace SmoothPhp\EventStore;
 /**
  * Class DuplicateAggregatePlayhead
  * @package SmoothPhp\EventStore
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 final class DuplicateAggregatePlayhead extends \Exception
 {

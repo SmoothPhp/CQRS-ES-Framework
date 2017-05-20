@@ -8,7 +8,7 @@ use SmoothPhp\Contracts\EventStore\EventStore;
 /**
  * Class EventSourcedRepository
  * @package SmoothPhp\EventSourcing
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 abstract class EventSourcedRepository
 {

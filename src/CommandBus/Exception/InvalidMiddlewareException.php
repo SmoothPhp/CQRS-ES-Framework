@@ -4,7 +4,7 @@ namespace SmoothPhp\CommandBus\Exception;
 /**
  * Class InvalidMiddlewareException
  * @package SmoothPhp\CommandBus\Exception
- * @author Simon Bennett <simon@bennett.im>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 final class InvalidMiddlewareException extends \InvalidArgumentException
 {

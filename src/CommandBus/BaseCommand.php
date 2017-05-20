@@ -7,7 +7,7 @@ use SmoothPhp\Contracts\CommandBus\Command;
 /**
  * Class Command
  * @package SmoothPhp\CommandBus
- * @author Simon Bennett <simon.bennett@smoothphp.com>
+ * @author Simon Bennett <simon@pixelatedcrow.com>
  */
 abstract class BaseCommand implements Command
 {
