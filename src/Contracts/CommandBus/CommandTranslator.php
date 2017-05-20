@@ -1,6 +1,8 @@
 <?php
 namespace SmoothPhp\Contracts\CommandBus;
 
+use SmoothPhp\CommandBus\Exception\HandlerNotFound;
+
 /**
  * Interface CommandTranslator
  * @package SmoothPhp\CommandBus
@@ -11,6 +13,7 @@ interface CommandTranslator
     /**
      * @param mixed $command
      * @return string
+     * @throws HandlerNotFound
      */
     public function toCommandHandler($command);
 }
