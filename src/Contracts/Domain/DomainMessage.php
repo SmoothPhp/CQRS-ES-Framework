@@ -1,7 +1,8 @@
 <?php
 namespace SmoothPhp\Contracts\Domain;
 
-use SmoothPhp\Domain\DateTime;
+use DateTime;
+use SmoothPhp\Domain\Metadata;
 
 /**
  * Interface DomainMessage
