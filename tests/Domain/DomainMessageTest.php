@@ -1,6 +1,7 @@
 <?php
 namespace SmoothPhp\Test\Domain;
 
+use Carbon\Carbon;
 use SmoothPhp\Contracts\EventSourcing\Event;
 use SmoothPhp\Domain\DateTime;
 use SmoothPhp\Domain\DomainMessage;
@@ -45,9 +46,21 @@ final class DomainMessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $domainMessage->getPlayHead());
         $this->assertSame($metaData, $domainMessage->getMetadata());
         $this->assertSame($payload, $domainMessage->getPayload());
-        $this->assertTrue($domainMessage->getRecordedOn()->diffInSeconds() <= 1);
+        $this->assertTrue(Carbon::instance($domainMessage->getRecordedOn())->diffInSeconds() <= 1);
 
         $this->assertEquals('SmoothPhp.Test.Domain.TestEvent', $domainMessage->getType());
+    }
+
+    public function test_carbon_test_date_does_not_affect()
+    {
+        $metaData = new Metadata();
+        $payload = new TestEvent();
+        $date = Carbon::create(2017, 1, 1);
+        Carbon::setTestNow($date);
+        $domainMessage = DomainMessage::recordNow('1', 0, $metaData, $payload);
+
+        $formatted = $domainMessage->getRecordedOn()->format('d/m/Y');
+        $this->assertNotSame($date->format('d/m/Y'), $formatted);
     }
 }
 

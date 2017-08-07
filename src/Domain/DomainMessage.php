@@ -1,6 +1,7 @@
 <?php
 namespace SmoothPhp\Domain;
 
+use DateTime;
 use SmoothPhp\Contracts\Domain\DomainMessage as DomainMessageInterface;
 
 /**
@@ -61,7 +62,7 @@ final class DomainMessage implements DomainMessageInterface
      */
     public static function recordNow($id, $playHead, Metadata $metadata, $payload)
     {
-        return new DomainMessage($id, $playHead, $metadata, $payload, DateTime::now());
+        return new DomainMessage($id, $playHead, $metadata, $payload, new DateTime);
     }
 
     /**
