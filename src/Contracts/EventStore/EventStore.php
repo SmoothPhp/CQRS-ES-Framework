@@ -22,10 +22,9 @@ interface EventStore
     /**
      * @param mixed $id
      * @param DomainEventStream $eventStream
-     * @param bool $ignorePlayhead
      * @return void
      */
-    public function append($id, DomainEventStream $eventStream, bool $ignorePlayhead = false) : void;
+    public function append($id, DomainEventStream $eventStream) : void;
 
     /**
      * @param string[] $eventTypes
