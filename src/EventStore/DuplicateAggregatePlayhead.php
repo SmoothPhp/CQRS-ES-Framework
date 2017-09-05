@@ -1,5 +1,8 @@
-<?php declare (strict_types = 1);
+<?php declare (strict_types=1);
+
 namespace SmoothPhp\EventStore;
+
+use Throwable;
 
 /**
  * Class DuplicateAggregatePlayhead
@@ -10,11 +13,12 @@ final class DuplicateAggregatePlayhead extends \Exception
 {
     /**
      * DuplicateAggregatePlayhead constructor.
-     * @param $aggregateId
-     * @param $playHead
+     * @param string $aggregateId
+     * @param int $playHead
+     * @param Throwable|null $previous
      */
-    public function __construct($aggregateId, $playHead)
+    public function __construct(string $aggregateId, int $playHead, Throwable $previous = null)
     {
-        $this->message  = "Duplicate Aggregate Playhead ({$aggregateId}-{$playHead})";
+        parent::__construct("Duplicate Aggregate Playhead ({$aggregateId}-{$playHead})", 0, $previous);
     }
 }

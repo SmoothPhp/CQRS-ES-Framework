@@ -17,27 +17,25 @@ interface EventStore
      * @return DomainEventStream
      * @throws EventStreamNotFound
      */
-    public function load($id);
+    public function load($id) : DomainEventStream;
 
     /**
      * @param mixed $id
      * @param DomainEventStream $eventStream
-     * @param bool $ignorePlayhead
      * @return void
      */
-    public function append($id, DomainEventStream $eventStream, bool $ignorePlayhead = false);
+    public function append($id, DomainEventStream $eventStream) : void;
 
     /**
      * @param string[] $eventTypes
      * @return int
      */
-    public function getEventCountByTypes($eventTypes);
+    public function getEventCountByTypes($eventTypes) : int;
 
     /**
      * @param string[] $eventTypes
-     * @param int $skip
      * @param int $take
-     * @return DomainEventStream
+     * @return \Generator
      */
-    public function getEventsByType($eventTypes, $skip, $take);
+    public function getEventsByType(array $eventTypes, int $take) : \Generator;
 }
