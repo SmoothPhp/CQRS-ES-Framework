@@ -1,7 +1,7 @@
 <?php
 namespace SmoothPhp\Test\Serialization;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\Serialization\ObjectSelfSerializer;
 use SmoothPhp\Contracts\Serialization\Serializable;
 

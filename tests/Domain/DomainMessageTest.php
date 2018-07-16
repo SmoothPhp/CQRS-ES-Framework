@@ -2,6 +2,7 @@
 namespace SmoothPhp\Test\Domain;
 
 use Carbon\Carbon;
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\Contracts\EventSourcing\Event;
 use SmoothPhp\Domain\DateTime;
 use SmoothPhp\Domain\DomainMessage;
@@ -12,7 +13,7 @@ use SmoothPhp\Domain\Metadata;
  * @package SmoothPhp\Test\Domain
  * @author Simon Bennett <simon@bennett.im>
  */
-final class DomainMessageTest extends \PHPUnit_Framework_TestCase
+final class DomainMessageTest extends TestCase
 {
     public function test_default_domain_message()
     {

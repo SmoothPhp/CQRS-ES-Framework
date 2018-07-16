@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
+
 namespace SmoothPhp\Contracts\EventStore;
 
 use SmoothPhp\Contracts\Domain\DomainEventStream;
@@ -17,7 +18,7 @@ interface EventStore
      * @return DomainEventStream
      * @throws EventStreamNotFound
      */
-    public function load($id);
+    public function load($id) : DomainEventStream;
 
     /**
      * @param mixed $id
@@ -25,19 +26,24 @@ interface EventStore
      * @param bool $ignorePlayhead
      * @return void
      */
-    public function append($id, DomainEventStream $eventStream, bool $ignorePlayhead = false);
+    public function append($id, DomainEventStream $eventStream, bool $ignorePlayhead = false) : void;
 
     /**
      * @param string[] $eventTypes
      * @return int
      */
-    public function getEventCountByTypes($eventTypes);
+    public function getEventCountByTypes($eventTypes) : int;
 
     /**
      * @param string[] $eventTypes
      * @param int $skip
      * @param int $take
-     * @return DomainEventStream
+     * @return \Generator
      */
-    public function getEventsByType($eventTypes, $skip, $take);
+    public function getEventsByType($eventTypes, $skip, $take) : \Generator;
+
+    /**
+     * @param string $streamId
+     */
+    public function deleteStream(string $streamId) : void;
 }
