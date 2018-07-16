@@ -1,5 +1,7 @@
 <?php
+
 namespace SmoothPhp\Contracts\Projections;
+
 /**
  * Interface ProjectionServiceProvider
  * @author Simon Bennett <simon@bennett.im>
@@ -7,17 +9,17 @@ namespace SmoothPhp\Contracts\Projections;
 interface ProjectionServiceProvider
 {
     /**
-     * @return string
+     * @return string|null
      */
-    public function up();
+    public function up() : ?string;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function down();
+    public function down() : ?string;
 
     /**
      * @return string[]
      */
-    public function getProjections();
+    public function getProjections() : array;
 }

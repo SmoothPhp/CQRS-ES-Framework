@@ -1,6 +1,7 @@
 <?php
 namespace SmoothPhp\Test\CommandBus;
 
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\CommandBus\SimpleCommandTranslator;
 
 /**
@@ -8,7 +9,7 @@ use SmoothPhp\CommandBus\SimpleCommandTranslator;
  * @package SmoothPhp\CommandBus\Test
  * @author Simon Bennett <simon.bennett@smoothphp.com>
  */
-final class CommandTranslatorTest extends \PHPUnit_Framework_TestCase
+final class CommandTranslatorTest extends TestCase
 {
     /**
      * @test

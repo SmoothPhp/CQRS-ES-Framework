@@ -1,5 +1,6 @@
 <?php namespace SmoothPhp\Test\AggregateRoot;
 
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\EventSourcing\Entity;
 use SmoothPhp\EventSourcing\AggregateRoot;
 use SmoothPhp\Contracts\EventSourcing\Event;
@@ -9,7 +10,7 @@ use SmoothPhp\Contracts\EventSourcing\Event;
  *
  * @author jrdn hannah <jrdn@jrdnhannah.co.uk>
  */
-final class EntityTest extends \PHPUnit_Framework_TestCase
+final class EntityTest extends TestCase
 {
     /**
      * @test
@@ -20,7 +21,7 @@ final class EntityTest extends \PHPUnit_Framework_TestCase
         $entity = new FooEntity;
 
         $root->addChildEntity($entity);
-        $mock = $this->getMock(BarEntity::class, ['handleRecursively']);
+        $mock = $this->getMockBuilder(BarEntity::class)->getMock();
         $mock->expects($this->once())
              ->method('handleRecursively');
 

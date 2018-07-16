@@ -1,6 +1,7 @@
 <?php
 namespace SmoothPhp\Test\AggregateRoot;
 
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\Contracts\EventSourcing\Event;
 use SmoothPhp\Domain\DateTime;
 use SmoothPhp\Domain\DomainEventStream;
@@ -12,7 +13,7 @@ use SmoothPhp\EventSourcing\AggregateRoot;
  * Class AggregateRootTest
  * @author Simon Bennett <simon@bennett.im>
  */
-final class AggregateRootTest extends \PHPUnit_Framework_TestCase
+final class AggregateRootTest extends TestCase
 {
     /**
      * @test

@@ -1,6 +1,7 @@
 <?php
 namespace SmoothPhp\Test\AggregateRoot;
 
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\Contracts\Domain\DomainEventStream;
 use SmoothPhp\Contracts\EventBus\EventBus;
 use SmoothPhp\Contracts\EventBus\EventListener;
@@ -18,7 +19,7 @@ use SmoothPhp\EventSourcing\EventSourcedRepository;
  * @package SmoothPhp\Test\AggregateRoot
  * @author Simon Bennett <simon@bennett.im>
  */
-final class EventSourcedRepositoryTest extends \PHPUnit_Framework_TestCase
+final class EventSourcedRepositoryTest extends TestCase
 {
     /**
      * @test
@@ -101,7 +102,7 @@ class MockStore implements EventStore
      * @param string $id
      * @return DomainEventStream
      */
-    public function load($id)
+    public function load($id) : DomainEventStream
     {
         $this->loadRunCount++;
 
@@ -114,7 +115,7 @@ class MockStore implements EventStore
                                                        ]);
     }
 
-    public function append($id, DomainEventStream $eventStream,bool $ignorePlayhead = false)
+    public function append($id, DomainEventStream $eventStream,bool $ignorePlayhead = false) : void
     {
         $this->appendRunCount++;
 
@@ -125,7 +126,7 @@ class MockStore implements EventStore
      * @param string[] $eventTypes
      * @return int
      */
-    public function getEventCountByTypes($eventTypes)
+    public function getEventCountByTypes($eventTypes) : int
     {
     }
 
@@ -133,11 +134,20 @@ class MockStore implements EventStore
      * @param string[] $eventTypes
      * @param int $skip
      * @param int $take
-     * @return DomainEventStream
+     * @return \Generator
      */
-    public function getEventsByType($eventTypes, $skip, $take)
+    public function getEventsByType($eventTypes, $skip, $take) : \Generator
     {
     }
+
+    /**
+     * @param string $streamId
+     */
+    public function deleteStream(string $streamId) : void
+    {
+        throw new \Exception('Not implemented [deleteStream] method');
+    }
+
 }
 
 class MockEventBus implements EventBus
