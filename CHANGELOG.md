@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+#5.1.0
+* [EventStore] Allow deletion of event streams
+
+#5.0.0
+* [EventStore] Change eventstore signurture to allow better rebuilds
 
 #4.0.0
 * Upgraded to php7

@@ -1,6 +1,7 @@
 <?php
 namespace SmoothPhp\Tests\EventDispatcher;
 
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\Contracts\EventDispatcher\Projection;
 use SmoothPhp\Contracts\EventDispatcher\Subscriber;
 use SmoothPhp\EventDispatcher\ProjectEnabledDispatcher;
@@ -10,7 +11,7 @@ use SmoothPhp\EventDispatcher\ProjectEnabledDispatcher;
  * @package SmoothPhp\Tests\EventDispatcher
  * @author Simon Bennett <simon@bennett.im>
  */
-final class ProjectEnabledDispatcherTest extends \PHPUnit_Framework_TestCase
+final class ProjectEnabledDispatcherTest extends TestCase
 {
     /**
      * @test

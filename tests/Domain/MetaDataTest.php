@@ -1,13 +1,14 @@
 <?php
 namespace SmoothPhp\Test\Domain;
 
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\Domain\Metadata;
 
 /**
  * Class MetaDataTest
  * @author Simon Bennett <simon@bennett.im>
  */
-final class MetaDataTest extends \PHPUnit_Framework_TestCase
+final class MetaDataTest extends TestCase
 {
     /**
      * @test

@@ -1,11 +1,13 @@
 <?php
 namespace SmoothPhp\Test\CommandBus;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Class CommandTest
  * @author Simon Bennett <simon.bennett@smoothphp.com>
  */
-class CommandTest extends \PHPUnit_Framework_TestCase
+class CommandTest extends TestCase
 {
     /**
      * @test

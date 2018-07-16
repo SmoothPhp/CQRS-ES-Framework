@@ -1,6 +1,8 @@
 <?php
+
 namespace SmoothPhp\Tests\EventBus;
 
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\Contracts\Domain\DomainMessage;
 use SmoothPhp\Contracts\EventBus\EventListener;
 use SmoothPhp\Domain\DateTime;
@@ -12,7 +14,7 @@ use SmoothPhp\EventBus\SimpleEventBus;
  * Class SimpleEventBusTest
  * @author Simon Bennett <simon@bennett.im>
  */
-final class SimpleEventBusTest extends \PHPUnit_Framework_TestCase
+final class SimpleEventBusTest extends TestCase
 {
     public function test_subscribing_to_event_bus()
     {
@@ -21,10 +23,11 @@ final class SimpleEventBusTest extends \PHPUnit_Framework_TestCase
         $listener = new EventBusListener();
         $eventBus->subscribe($listener);
 
-
-        $this->assertEquals(0,$listener->runCount);
-        $eventBus->publish(new DomainEventStream([new \SmoothPhp\Domain\DomainMessage('',0,new Metadata(),null,new DateTime())]));
-        $this->assertEquals(1,$listener->runCount);
+        $this->assertEquals(0, $listener->runCount);
+        $eventBus->publish(
+            new DomainEventStream([new \SmoothPhp\Domain\DomainMessage('', 0, new Metadata(), null, new DateTime())])
+        );
+        $this->assertEquals(1, $listener->runCount);
     }
 
     /**
@@ -36,6 +39,7 @@ final class SimpleEventBusTest extends \PHPUnit_Framework_TestCase
 
         $stream = new DomainEventStream([]);
         $bus->publish($stream);
+        $this->assertTrue(true);
     }
 }
 

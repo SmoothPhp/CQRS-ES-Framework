@@ -1,9 +1,10 @@
 <?php
+
 namespace SmoothPhp\Test\CommandBus;
 
+use PHPUnit\Framework\TestCase;
 use SmoothPhp\CommandBus\CommandBus;
 use SmoothPhp\CommandBus\CommandHandlerMiddleWare;
-use SmoothPhp\CommandBus\Exception\HandlerNotFound;
 use SmoothPhp\CommandBus\SimpleCommandHandlerResolver;
 use SmoothPhp\CommandBus\SimpleCommandTranslator;
 use SmoothPhp\Test\CommandBus\Helpers\DummyMiddleware;
@@ -14,7 +15,7 @@ use SmoothPhp\Test\CommandBus\Helpers\TestCommandWithoutHandler;
  * @package SmoothPhp\CommandBus\Test
  * @author Simon Bennett <simon.bennett@smoothphp.com>
  */
-final class CommandBusTest extends \PHPUnit_Framework_TestCase
+final class CommandBusTest extends TestCase
 {
     /**
      * @var CommandHandlerMiddleWare
@@ -38,19 +39,17 @@ final class CommandBusTest extends \PHPUnit_Framework_TestCase
         $command = new TestCommand();
 
         $this->commandBus->execute($command);
+        $this->assertTrue(true);
     }
 
     /**
      * @test
+     * @expectedException  \SmoothPhp\CommandBus\Exception\HandlerNotFound
      */
     public function exception_on_missing_handler()
     {
         $command = new TestCommandWithoutHandler();
 
-        $this->setExpectedException(
-            HandlerNotFound::class,
-            'Handler for command [SmoothPhp\Test\CommandBus\Helpers\TestCommandWithoutHandler] not found'
-        );
         $this->commandBus->execute($command);
     }
 
@@ -75,7 +74,6 @@ final class CommandBusTest extends \PHPUnit_Framework_TestCase
         );
 
         $commandBus = new  CommandBus([$dummyMiddleware, $commandBusHandler]);
-
 
         $command = new TestCommand();
 
