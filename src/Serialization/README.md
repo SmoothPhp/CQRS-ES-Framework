@@ -12,7 +12,7 @@ use SmoothPhp\Contracts\Serialization\Serializable;
 class MyDTO implements Serializable {
 	public function __construct(Id $id, DateTime $creationDate) {
 		$this->id = $id;
-		$this-creationDate = $creationDate;
+		$this->creationDate = $creationDate;
 	}
 
 	// getters
