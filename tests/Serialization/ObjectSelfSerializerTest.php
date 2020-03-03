@@ -1,9 +1,10 @@
 <?php
+
 namespace SmoothPhp\Test\Serialization;
 
 use PHPUnit\Framework\TestCase;
-use SmoothPhp\Serialization\ObjectSelfSerializer;
 use SmoothPhp\Contracts\Serialization\Serializable;
+use SmoothPhp\Serialization\ObjectSelfSerializer;
 
 /**
  * Class ObjectSelfSerializerTest
@@ -14,10 +15,11 @@ final class ObjectSelfSerializerTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \SmoothPhp\Serialization\Exception\SerializationException
      */
     public function it_should_only_serialize_serializable_objects()
     {
+        $this->expectException(\SmoothPhp\Serialization\Exception\SerializationException::class);
+
         $serializer = new ObjectSelfSerializer;
         $nonSerializableObject = new \stdClass;
 
@@ -26,10 +28,11 @@ final class ObjectSelfSerializerTest extends TestCase
 
     /**
      * @test
-     * @expectedException \SmoothPhp\Serialization\Exception\SerializationException
      */
     public function it_should_not_attempt_to_deserialize_non_serializable_data()
     {
+        $this->expectException(\SmoothPhp\Serialization\Exception\SerializationException::class);
+
         $serializer = new ObjectSelfSerializer;
         $data = ['class' => 'stdClass', 'payload' => ['foo' => 'bar']];
 
@@ -42,12 +45,15 @@ final class ObjectSelfSerializerTest extends TestCase
     public function it_should_serialize_serializable_objects()
     {
         $serializer = new ObjectSelfSerializer;
-        $object     = new SerializableObject('foo');
+        $object = new SerializableObject('foo');
 
-        $this->assertEquals([
-            'class' => SerializableObject::class,
-            'payload' => ['foo' => 'foo']
-        ], $serializer->serialize($object));
+        $this->assertEquals(
+            [
+                'class'   => SerializableObject::class,
+                'payload' => ['foo' => 'foo'],
+            ],
+            $serializer->serialize($object)
+        );
     }
 
     /**
@@ -56,9 +62,9 @@ final class ObjectSelfSerializerTest extends TestCase
     public function it_should_deserialize_arrays_into_the_correct_object()
     {
         $serializer = new ObjectSelfSerializer;
-        $data       = ['class' => SerializableObject::class, 'payload' => ['foo' => 'foo']];
+        $data = ['class' => SerializableObject::class, 'payload' => ['foo' => 'foo']];
 
-        $object     = $serializer->deserialize($data);
+        $object = $serializer->deserialize($data);
         $this->assertInstanceOf(SerializableObject::class, $object);
         $this->assertEquals('foo', $object->getFoo());
     }
