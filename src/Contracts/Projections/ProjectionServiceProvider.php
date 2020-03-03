@@ -11,12 +11,12 @@ interface ProjectionServiceProvider
     /**
      * @return string|null
      */
-    public function up() : ?string;
+    public function up();
 
     /**
      * @return string|null
      */
-    public function down() : ?string;
+    public function down();
 
     /**
      * @return string[]
