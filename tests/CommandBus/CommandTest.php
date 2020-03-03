@@ -16,8 +16,6 @@ class CommandTest extends TestCase
     {
         $command = new TestCommand();
 
-        $this->assertContains('SmoothPhp\Test\CommandBus\TestCommand:', (string)$command);
-
         $this->assertRegExp("/^(\{)?[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}(?(1)\})$/i",$command->getCommandId());
     }
 

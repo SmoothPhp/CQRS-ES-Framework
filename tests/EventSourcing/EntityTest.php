@@ -1,9 +1,9 @@
 <?php namespace SmoothPhp\Test\AggregateRoot;
 
 use PHPUnit\Framework\TestCase;
-use SmoothPhp\EventSourcing\Entity;
-use SmoothPhp\EventSourcing\AggregateRoot;
 use SmoothPhp\Contracts\EventSourcing\Event;
+use SmoothPhp\EventSourcing\AggregateRoot;
+use SmoothPhp\EventSourcing\Entity;
 
 /**
  * Class EntityTest
@@ -32,10 +32,10 @@ final class EntityTest extends TestCase
 
     /**
      * @test
-     * @expectedException \SmoothPhp\EventSourcing\Exception\AggregateRootAlreadyRegistered
      */
     public function one_aggregate_to_rule_them_to_bind_them()
     {
+        $this->expectException(\SmoothPhp\EventSourcing\Exception\AggregateRootAlreadyRegistered::class);
         $root1 = new FooAggregate;
         $root2 = new FooAggregate;
         $entity = new FooEntity;
@@ -129,4 +129,6 @@ class BarEntity extends Entity
     }
 }
 
-class BarEvent implements Event {}
+class BarEvent implements Event
+{
+}
