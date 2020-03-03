@@ -136,12 +136,14 @@ class MockStore implements EventStore
      * @param int $take
      * @return \Generator
      */
-    public function getEventsByType($eventTypes, $skip, $take) : \Generator
+    public function getEventsByType($eventTypes, $take) : \Generator
     {
     }
 
     /**
      * @param string $streamId
+     *
+     * @throws \Exception
      */
     public function deleteStream(string $streamId) : void
     {
@@ -161,7 +163,9 @@ class MockEventBus implements EventBus
 
     /**
      * @param $eventListener
+     *
      * @return mixed
+     * @throws \Exception
      */
     public function subscribe(EventListener $eventListener)
     {
