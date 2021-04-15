@@ -14,10 +14,11 @@ final class ObjectSelfSerializerTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \SmoothPhp\Serialization\Exception\SerializationException
      */
     public function it_should_only_serialize_serializable_objects()
     {
+
+        $this->expectException('\SmoothPhp\Serialization\Exception\SerializationException');
         $serializer = new ObjectSelfSerializer;
         $nonSerializableObject = new \stdClass;
 
@@ -26,10 +27,11 @@ final class ObjectSelfSerializerTest extends TestCase
 
     /**
      * @test
-     * @expectedException \SmoothPhp\Serialization\Exception\SerializationException
      */
     public function it_should_not_attempt_to_deserialize_non_serializable_data()
     {
+        $this->expectException('\SmoothPhp\Serialization\Exception\SerializationException');
+
         $serializer = new ObjectSelfSerializer;
         $data = ['class' => 'stdClass', 'payload' => ['foo' => 'bar']];
 

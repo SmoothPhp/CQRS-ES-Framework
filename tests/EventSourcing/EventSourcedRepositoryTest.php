@@ -136,7 +136,7 @@ class MockStore implements EventStore
      * @param int $take
      * @return \Generator
      */
-    public function getEventsByType($eventTypes, $skip, $take) : \Generator
+    public function getEventsByType(array $eventTypes, int $take) : \Generator
     {
     }
 

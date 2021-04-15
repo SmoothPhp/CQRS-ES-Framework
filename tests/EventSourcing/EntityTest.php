@@ -32,10 +32,12 @@ final class EntityTest extends TestCase
 
     /**
      * @test
-     * @expectedException \SmoothPhp\EventSourcing\Exception\AggregateRootAlreadyRegistered
      */
     public function one_aggregate_to_rule_them_to_bind_them()
     {
+
+        $this->expectException('\SmoothPhp\EventSourcing\Exception\AggregateRootAlreadyRegistered');
+
         $root1 = new FooAggregate;
         $root2 = new FooAggregate;
         $entity = new FooEntity;

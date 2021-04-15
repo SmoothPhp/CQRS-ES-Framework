@@ -22,7 +22,7 @@ final class CommandBusTest extends TestCase
      */
     private $commandBus;
 
-    public function setup()
+    protected function setUp() : void
     {
         $commandBusHandler = new CommandHandlerMiddleWare(
             new SimpleCommandTranslator(),
@@ -44,10 +44,10 @@ final class CommandBusTest extends TestCase
 
     /**
      * @test
-     * @expectedException  \SmoothPhp\CommandBus\Exception\HandlerNotFound
      */
     public function exception_on_missing_handler()
     {
+        $this->expectException('\SmoothPhp\CommandBus\Exception\HandlerNotFound');
         $command = new TestCommandWithoutHandler();
 
         $this->commandBus->execute($command);
